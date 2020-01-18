@@ -1,3 +1,5 @@
+# Chainpoint
+
 ## Introduction to Chainpoint
 
 Chainpoint is a protocol for anchoring data the Bitcoin blockchain. 
