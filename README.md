@@ -9,7 +9,7 @@
     + [Chainpoint Client Node](#chainpoint-client-node)
     + [Chainpoint Clients](#chainpoint-clients)
   * [Versions](#versions)
-  * [Important Links](#Important Links)
+  * [Important Links](#important-links)
 
 ## Introduction
 
