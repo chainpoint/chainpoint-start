@@ -25,7 +25,7 @@ By default, Cores are members of the [Lightning Network](https://lightning.netwo
 
 The various components of the Chainpoint Network and their dependencies are broken down below.
 
-### Chainpoint Core
+### Chainpoint Core Node
 Download Chainpoint Core to join the Chainpoint Calendar Blockchain and help the network anchor to bitcoin:
 
 [Chainpoint Core](https://github.com/chainpoint/chainpoint-core/blob/master/README.md)  
@@ -34,7 +34,7 @@ Download Chainpoint Core to join the Chainpoint Calendar Blockchain and help the
 | -- [btc-bridge](https://github.com/Tierion/btc-bridge)  
 |&nbsp; &nbsp; | -- [lnrpc-node-client](https://github.com/Tierion/lnrpc-node-client)  
 
-### Chainpoint Node
+### Chainpoint Client Node
 Download Chainpoint Client Node to aggregate hashes, send them to Core for anchoring, and retrieve proofs:
 
 [Chainpoint Node](https://github.com/chainpoint/chainpoint-node-src)  
@@ -45,7 +45,7 @@ Download Chainpoint Client Node to aggregate hashes, send them to Core for ancho
 |&nbsp; &nbsp; | -- [chainpoint-binary](https://github.com/chainpoint/chainpoint-binary)  
 |&nbsp; &nbsp; | -- [chainpoint-proof-json-schema](https://github.com/chainpoint/chainpoint-proof-json-schema)  
 
-## Chainpoint Clients
+### Chainpoint Clients
 Download Chainpoint CLI or chainpoint-client-js to submit hashes to Client Nodes:
 
 [Chainpoint CLI](https://github.com/chainpoint/chainpoint-cli)  
