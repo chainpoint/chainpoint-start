@@ -1,8 +1,13 @@
 # Chainpoint
 
+Chainpoint is a protocol for anchoring data the Bitcoin blockchain. 
+It makes the process more cost-effective by creating intermediate, decentralized tiers between the user and the Bitcoin blockchain. 
+The end result of anchoring is a Chainpoint Proof showing how the user's data was cryptographically included in the Bitcoin blockchain.
+
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
 ## Table of Contents
 
-  * [Introduction](#introduction)
   * [Architecture](#architecture)
   * [Components](#components)
     + [Chainpoint Core Node](#chainpoint-core-node)
@@ -11,11 +16,6 @@
   * [Versions](#versions)
   * [Important Links](#important-links)
 
-## Introduction
-
-Chainpoint is a protocol for anchoring data the Bitcoin blockchain. 
-It makes the process more cost-effective by creating intermediate, decentralized tiers between the user and the Bitcoin blockchain. 
-The end result of anchoring is a Chainpoint Proof showing how the user's data was cryptographically included in the Bitcoin blockchain.
 
 ## Architecture
 
