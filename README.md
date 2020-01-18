@@ -23,6 +23,8 @@ By default, Cores are members of the [Lightning Network](https://lightning.netwo
 
 ## Components of Chainpoint
 
+The various components of the Chainpoint Network and their dependencies are broken down below.
+
 ### Chainpoint Core
 Download Chainpoint Core to join the Chainpoint Calendar Blockchain and help the network anchor to bitcoin:
 
