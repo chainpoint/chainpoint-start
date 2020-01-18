@@ -1,12 +1,23 @@
 # Chainpoint
 
-## Introduction to Chainpoint
+## Table of Contents
+
+  * [Introduction](#introduction)
+  * [Architecture](#architecture)
+  * [Components](#components)
+    + [Chainpoint Core Node](#chainpoint-core-node)
+    + [Chainpoint Client Node](#chainpoint-client-node)
+    + [Chainpoint Clients](#chainpoint-clients)
+  * [Versions](#versions)
+  * [Important Links](#Important Links)
+
+## Introduction
 
 Chainpoint is a protocol for anchoring data the Bitcoin blockchain. 
 It makes the process more cost-effective by creating intermediate, decentralized tiers between the user and the Bitcoin blockchain. 
 The end result of anchoring is a Chainpoint Proof showing how the user's data was cryptographically included in the Bitcoin blockchain.
 
-## Architecture of Chainpoint
+## Architecture
 
 The story of bitcoin anchoring begins with users installing [Chainpoint-CLI](https://github.com/chainpoint/chainpoint-cli) or [chainpoint-client-js](https://github.com/chainpoint/chainpoint-client-js) to submit hashes to the _Chainpoint Network_.
 
@@ -23,7 +34,7 @@ it is an efficient method of proving that user-submitted content existed at a pa
 By default, Cores are members of the [Lightning Network](https://lightning.network/). Client Nodes use Lightning to pay Cores for permission to anchor a hash. Additionally, Lightning is used by new Cores to stake bitcoin to the Chainpoint Network as part of an anti-sybil mechanism. 
 
 
-## Components of Chainpoint
+## Components
 
 The various components of the Chainpoint Network and their dependencies are broken down below.
 
@@ -56,3 +67,7 @@ Download Chainpoint CLI or chainpoint-client-js to submit hashes to Client Nodes
 |&nbsp; &nbsp; |&nbsp; &nbsp; | -- [chainpoint-binary](https://github.com/chainpoint/chainpoint-binary)  
 |&nbsp; &nbsp; |&nbsp; &nbsp; | -- [chainpoint-proof-json-schema](https://github.com/chainpoint/chainpoint-proof-json-schema)  
 
+
+## Versions
+
+## Important Links
