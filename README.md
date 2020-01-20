@@ -1,8 +1,8 @@
 # Chainpoint
 
-Chainpoint is a protocol for anchoring data the Bitcoin blockchain. 
-It makes the process more cost-effective by creating intermediate, decentralized tiers between the user and the Bitcoin blockchain. 
-The end result of anchoring is a Chainpoint Proof showing how the user's data was cryptographically included in the Bitcoin blockchain.
+Chainpoint is a protocol for anchoring data to the Bitcoin blockchain. 
+It makes the process more cost-effective by creating intermediate, decentralized tiers between the user and Bitcoin blocks. 
+The end result of anchoring is a Chainpoint Proof showing how the user's data was cryptographically included in the blockchain.
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
@@ -27,9 +27,9 @@ The first level of the Chainpoint Network is [Chainpoint Client Node](https://gi
 The resulting datapoint is then submitted to the second tier of Chainpoint, a network of [Chainpoint Core Nodes](https://github.com/chainpoint/chainpoint-core).
 The Core Network consists of many Cores running in concert to create a Tendermint-based blockchain called the Calendar. 
 Every hour, a random Core is elected to anchor the state of the Calendar to Bitcoin and write the result back to the Calendar. 
-When there are more Cores in the Network, any given Core will be selected to anchor less frequently. This reduces the individual burden of paying Bitcoin fees.
+When there are more Cores in the network, any given Core will be selected to anchor less frequently. This reduces the individual burden of paying Bitcoin fees.
 
-After a Core anchors to Bitcoin, Chainpoint Client Nodes can retrieve the result and construct a Chainpoint Proof. Because the Bitcoin blockchain is viewable by everyone and secured by Bitcoin Mining, writing data to Bitcoin constitutes a reliable form of notarization-
+After a Core anchors to Bitcoin, Chainpoint Client Nodes can retrieve the result and construct a Chainpoint Proof. Because the Bitcoin blockchain is viewable by everyone and secured by Bitcoin mining, writing data to Bitcoin constitutes a reliable form of notarization-
 it is an efficient method of proving that user-submitted content existed at a particular point in time.
 
 By default, Cores are members of the [Lightning Network](https://lightning.network/). Client Nodes use Lightning to pay Cores for permission to anchor a hash. Additionally, Lightning is used by new Cores to stake bitcoin to the Chainpoint Network as part of an anti-sybil mechanism. 
@@ -66,7 +66,7 @@ The various components of the Chainpoint Network and their dependencies are brok
 You can choose how you want to use or support the Chainpoint Network by picking from the three options below.
 
 ### Chainpoint Core Node
-Download Chainpoint Core to join the Chainpoint Calendar Blockchain and help the network anchor to bitcoin. Follow the directions below to install and run Core:
+Download Chainpoint Core to join the Chainpoint Calendar Blockchain, help the network anchor to bitcoin, and potentially earn Bitcoin on lightning from Nodes and clients submitting hashes. Follow the directions below to install and run Core:
 
 ```$bash
 $ sudo apt-get install make git
