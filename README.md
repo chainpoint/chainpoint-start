@@ -177,8 +177,34 @@ $ make deploy
 ```
 
 ### Chainpoint Clients
-Download Chainpoint CLI or chainpoint-client-js to submit hashes to Client Nodes.
+You can download chainpoint-client-js or the Chainpoint CLI to submit hashes to Client Nodes.
+
+To get started with the Chainpoint-Client, follow the guide and sample code at the [Chainpoint-Client-JS](https://github.com/chainpoint/chainpoint-client-js#tldr) repo.
+
+For the CLI, download a release from Github:
+
+```bash
+$ curl -L https://github.com/chainpoint/chainpoint-cli/releases/download/v2.0.0/chainpoint-cli-linux -o chp
+
+$ chmod +x chp
+
+$ ./chp --node-uri http://3.136.178.15 submit ffff27222fe366d0b8988b7312c6ba60ee422418d92b62cdcb71fe2991ee7391
+5c768d70-3bee-11ea-b567-010dabc510b6 | ffff27222fe366d0b8988b7312c6ba60ee422418d92b62cdcb71fe2991ee7391 | submitted
+```
+
 
 ## Versions
 
+For the legacy Chainpoint V3 Network using the Tierion Network Token and Chainpoint-Services, please see the [TNT-Legacy repositories](https://github.com/tnt-legacy). 
+The current version of the Chainpoint Network using Lightning and Chainpoint-Core is V4. 
+Stable releases will be tagged in all relevant repos listed under the [Components](#components) section of this Readme. 
+Additionally, the `master` branch for each of these repositories is considered to be generally stable. 
+
+
 ## Important Links
+
+- [Chainpoint Website](https://chainpoint.org/)
+- [Tierion Blog](https://medium.com/tierion)
+- [Tierion Discord](https://tnt.tl/tnt_discord)
+- [Chainpoint JSON Proof Schema](https://chainpoint.org/contexts/chainpoint-v4.jsonld)
+- [Lightning Infrastructure Repository](https://github.com/Tierion/boltbox)
