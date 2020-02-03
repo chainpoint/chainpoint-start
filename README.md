@@ -44,7 +44,7 @@ Nodes receive hashes from Clients, aggregate hashes in a [merkle tree](https://e
 
 Each Core is a member of a distributed network that uses [Tendermint](https://github.com/tendermint/tendermint) to reach consensus. Cores aggregate hashes received from Nodes, maintain the Chainpoint Calendar, and periodically anchor data to the Bitcoin blockchain. Each Core is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd). Cores receive Anchor Fee payments from Nodes via Lightning. The default Anchor Fee is 2 sats. Core Operators can set their Anchor Fee to adapt to changing market conditions.
 
-To join the network, Cores must open Lightning channels with 2/3rds of the existing Cores, and maintain a minimum balance of 1,000,000 satoshis. This provides a measure of Sybil resistance and helps ensure Cores have the liquidity to receive Lightning payments from Nodes. As more Cores join the network, each Core anchors less frequently. This reduces the burden of paying Bitcoin transaction fees.
+To join the network, Cores must open Lightning channels with 2/3rds of the existing Cores. Each channel must have a minimum capacity of 1,000,000 satoshis. This provides a measure of Sybil resistance and helps ensure Cores have the liquidity to receive Lightning payments from Nodes. As more Cores join the network, each Core anchors less frequently. This reduces the burden of paying Bitcoin transaction fees.
 
 # Components
 
