@@ -84,3 +84,4 @@ For the legacy network using the Tierion Network Token and Chainpoint-Services, 
 - [Chainpoint JSON Proof Schema](https://chainpoint.org/contexts/chainpoint-v4.jsonld)
 - [Lightning Infrastructure Repository](https://github.com/Tierion/boltbox)
 
+Copyright 2020 Tierion, Inc.
