@@ -1,44 +1,54 @@
-# Chainpoint
 
-Chainpoint is a protocol for anchoring data to the Bitcoin blockchain. 
-It makes the process more cost-effective by creating intermediate, decentralized tiers between the user and Bitcoin blocks. 
-The end result of anchoring is a Chainpoint Proof showing how the user's data was cryptographically included in the blockchain.
+This repo provides an overview of Chainpoint and links to additional resources.
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+## Chainpoint Overview
 
-## Table of Contents
+[Chainpoint](https://github.com/chainpoint) is a protocol for anchoring data to Bitcoin to generate a timestamp proof. 
 
-  * [Architecture](#architecture)
-  * [Components](#components)
-  * [Getting Started](#getting-started)
-      + [Chainpoint Core Node](#chainpoint-core-node)
-      + [Chainpoint Client Node](#chainpoint-client-node)
-      + [Chainpoint Clients](#chainpoint-clients)
-  * [Versions](#versions)
-  * [Important Links](#important-links)
+The Chainpoint Network is a globally distributed network of nodes. Clients submit hashes to Nodes, which are aggregated into a [Merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of this tree is published in a Bitcoin transaction. The final Chainpoint Proof contains a set of operations that cryptographically link data to the Bitcoin blockchain.
+
+## Chainpoint Network
+![Draft Chainpoint Architecture Diagram](https://paper-attachments.dropbox.com/s_883E156766A879673911BFDD878E29AA5A98EB3FDCF0A3A1EF22315E9B0438F5_1579736021684_Zeus+Architeture+Draft+v2.png)
 
 
-## Architecture
-
-The story of bitcoin anchoring begins with users installing [Chainpoint-CLI](https://github.com/chainpoint/chainpoint-cli) or [chainpoint-client-js](https://github.com/chainpoint/chainpoint-client-js) to submit hashes to the _Chainpoint Network_.
-
-The first level of the Chainpoint Network is [Chainpoint Client Node](https://github.com/chainpoint/chainpoint-node-src), which _aggregates_ user-submitted hashes into a single datapoint every minute. 
-
-The resulting datapoint is then submitted to the second tier of Chainpoint, a network of [Chainpoint Core Nodes](https://github.com/chainpoint/chainpoint-core).
-The Core Network consists of many Cores running in concert to create a Tendermint-based blockchain called the Calendar. 
-Every hour, a random Core is elected to anchor the state of the Calendar to Bitcoin and write the result back to the Calendar. 
-When there are more Cores in the network, any given Core will be selected to anchor less frequently. This reduces the individual burden of paying Bitcoin fees.
-
-After a Core anchors to Bitcoin, Chainpoint Client Nodes can retrieve the result and construct a Chainpoint Proof. Because the Bitcoin blockchain is viewable by everyone and secured by Bitcoin mining, writing data to Bitcoin constitutes a reliable form of notarization-
-it is an efficient method of proving that user-submitted content existed at a particular point in time.
-
-By default, Cores are members of the [Lightning Network](https://lightning.network/). Client Nodes use Lightning to pay Cores for permission to anchor a hash. Additionally, Lightning is used by new Cores to stake bitcoin to the Chainpoint Network as part of an anti-sybil mechanism. 
+The Chainpoint Network is composed of a hierarchy of aggregators that coordinate to create Chainpoint Proofs. Here’s an overview of the process:
 
 
-## Components
+1. Clients submit hashes to Nodes. 
+2. Nodes aggregate hashes in a Merkle tree, and send a Merkle root to one or more Cores. 
+3. Cores perform an additional round of aggregation, and write Merkle roots in transactions on a [Tendermint](https://github.com/tendermint/tendermint)-based blockchain called the Calendar. 
+4. Every hour, a single Core is elected to anchor the state of the Calendar to Bitcoin, monitor the blockchain for [six confirmations](https://en.bitcoin.it/wiki/Confirmation), and write the results back to the Calendar. 
+5. Nodes and Clients use the new data from the Calendar to construct final Chainpoint Proofs. 
 
-The various components of the Chainpoint Network and their dependencies are broken down below.
+Due to the characteristics of Bitcoin, this asynchronous process takes approximately 90 minutes.
 
+
+# Clients
+## [chainpoint-client-js](https://github.com/chainpoint/chainpoint-client-js)
+
+A javascript client to submit hashes to Nodes, retrieve final Chainpoint Proofs, and verify proofs.
+
+## [chainpoint CLI](https://github.com/chainpoint/chainpoint-cli)
+
+A Command Line Interface (CLI) for creating and verifying Chainpoint proofs.
+
+
+# Nodes
+## [chainpoint-node](http://github.com/chainpoint/chainpoint-node)
+
+Nodes receive hashes from Clients, aggregate hashes in a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree), and periodically send a merkle root to one or more Cores. Each Node is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd_. Nodes use Lighting to pay Cores an Anchor Fee for submitting a merkle root. 
+
+
+# Core
+## [chainpoint-core](http://github.com/chainpoint/chainpoint-core)
+
+Each Core is a member of a distributed network. Tendermint mention. Cores aggregate hashes received from Nodes, maintain the Chainpoint Calendar, and periodically anchor data to the Bitcoin blockchain. Each Core is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd). Cores receive Anchor Fee payments from Nodes via Lightning. The default Anchor Fee is 2 sats. Core Operators can set their Anchor Fee to adapt to changing market conditions.
+
+To join the network, Cores must open Lightning channels with 2/3rds of the existing Cores, and maintain a minimum balance of 1,000,000 satoshis. This provides a measure of Sybil resistance and helps ensure Cores have the liquidity to receive Lightning payments from Nodes. As more Cores join the network, each Core anchors less frequently. This reduces the burden of paying Bitcoin transaction fees.
+
+# Components
+
+The components of the Chainpoint Network and their dependencies are below.
 
 
 [Chainpoint Core](https://github.com/chainpoint/chainpoint-core/blob/master/README.md)  
@@ -59,152 +69,18 @@ The various components of the Chainpoint Network and their dependencies are brok
 | -- [chainpoint-client-js](https://github.com/chainpoint/chainpoint-client-js)  
 |&nbsp; &nbsp; | -- [chainpoint-parse](https://github.com/chainpoint/chainpoint-parse)  
 |&nbsp; &nbsp; |&nbsp; &nbsp; | -- [chainpoint-binary](https://github.com/chainpoint/chainpoint-binary)  
-|&nbsp; &nbsp; |&nbsp; &nbsp; | -- [chainpoint-proof-json-schema](https://github.com/chainpoint/chainpoint-proof-json-schema)  
+|&nbsp; &nbsp; |&nbsp; &nbsp; | -- [chainpoint-proof-json-schema](https://github.com/chainpoint/chainpoint-proof-json-schema) 
 
-## Getting Started
+# Versions
 
-You can choose how you want to use or support the Chainpoint Network by picking from the three options below.
+Stable releases will be tagged in all relevant repos listed in the Components section of this Readme. The `master` branch for each of these repositories is considered to be stable. 
 
-### Chainpoint Core Node
-Download Chainpoint Core to join the Chainpoint Calendar Blockchain, help the network anchor to bitcoin, and potentially earn Bitcoin on lightning from Nodes and clients submitting hashes. Follow the directions below to install and run Core:
+# Legacy Software
 
-```$bash
-$ sudo apt-get install make git
-$ git clone https://github.com/chainpoint/chainpoint-core.git
-$ cd chainpoint-core
-$ make install-deps
+For the legacy network using the Tierion Network Token and Chainpoint-Services, please see the [TNT-Legacy repositories](https://github.com/tnt-legacy). 
 
-Please logout and login to allow your user to use docker
-
-$ make init
-
- ██████╗██╗  ██╗ █████╗ ██╗███╗   ██╗██████╗  ██████╗ ██╗███╗   ██╗████████╗     ██████╗ ██████╗ ██████╗ ███████╗
-██╔════╝██║  ██║██╔══██╗██║████╗  ██║██╔══██╗██╔═══██╗██║████╗  ██║╚══██╔══╝    ██╔════╝██╔═══██╗██╔══██╗██╔════╝
-██║     ███████║███████║██║██╔██╗ ██║██████╔╝██║   ██║██║██╔██╗ ██║   ██║       ██║     ██║   ██║██████╔╝█████╗  
-██║     ██╔══██║██╔══██║██║██║╚██╗██║██╔═══╝ ██║   ██║██║██║╚██╗██║   ██║       ██║     ██║   ██║██╔══██╗██╔══╝  
-╚██████╗██║  ██║██║  ██║██║██║ ╚████║██║     ╚██████╔╝██║██║ ╚████║   ██║       ╚██████╗╚██████╔╝██║  ██║███████╗
- ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝ ╚═╝╚═╝  ╚═══╝   ╚═╝        ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
-
-
-? Will this Core use Bitcoin mainnet or testnet? Testnet
-? Enter your Instance's Public IP Address: 3.17.78.45
-
-Initializing Lightning wallet...
-Create new address for wallet...
-Creating Docker secrets...
-****************************************************
-Lightning initialization has completed successfully.
-****************************************************
-LND Wallet Password: rjcOgYehDmthuurduuriAMsr
-LND Wallet Seed: absorb behind drop safe like herp derp celery galaxy wait orient sign suit castle awake gadget pass pipe sudden ethics hill choose six orphan
-LND Wallet Address: tb1qfvjr20txm464fxcr0n9d4j2gkr5w4xpl55kl6u
-******************************************************
-You should back up this information in a secure place.
-******************************************************
-
-Please fund the Lightning Wallet Address above with Bitcoin and wait for 6 confirmation before running 'make deploy'
-
-$ make deploy
-```
-
-### Chainpoint Client Node
-Download Chainpoint Client Node to aggregate hashes, send them to Core for anchoring, and retrieve proofs. Follow the directions below to install and run a Client Node:
-
-```bash
-$ sudo apt-get install make git
-$ git clone https://github.com/chainpoint/chainpoint-node-src.git
-$ cd chainpoint-node-src
-$ make install-deps
-
-Please logout and login to allow your user to use docker
-
-
-██████╗██╗  ██╗ █████╗ ██╗███╗   ██╗██████╗  ██████╗ ██╗███╗   ██╗████████╗    ███╗   ██╗ ██████╗ ██████╗ ███████╗
-██╔════╝██║  ██║██╔══██╗██║████╗  ██║██╔══██╗██╔═══██╗██║████╗  ██║╚══██╔══╝    ████╗  ██║██╔═══██╗██╔══██╗██╔════╝
-██║     ███████║███████║██║██╔██╗ ██║██████╔╝██║   ██║██║██╔██╗ ██║   ██║       ██╔██╗ ██║██║   ██║██║  ██║█████╗
-██║     ██╔══██║██╔══██║██║██║╚██╗██║██╔═══╝ ██║   ██║██║██║╚██╗██║   ██║       ██║╚██╗██║██║   ██║██║  ██║██╔══╝
-╚██████╗██║  ██║██║  ██║██║██║ ╚████║██║     ╚██████╔╝██║██║ ╚████║   ██║       ██║ ╚████║╚██████╔╝██████╔╝███████╗
- ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝ ╚═╝╚═╝  ╚═══╝   ╚═╝       ╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚══════╝
-
-
-? Will this Core use Bitcoin mainnet or testnet? Testnet
-? Enter your Node's Public IP Address: 104.154.83.163
-
-Initializing Lightning wallet...
-Create new address for wallet...
-Creating Docker secrets...
-****************************************************
-Lightning initialization has completed successfully.
-****************************************************
-Lightning Wallet Password: kPlIshurrduurSQoXa
-LND Wallet Seed: absorb behind drop safe like herp derp celery galaxy wait orient sign suit castle awake gadget pass pipe sudden ethics hill choose six orphan
-Lightning Wallet Address:tb1qglvlrlg0velrserjuuy7s4uhrsrhuzwgl8hvgm
-******************************************************
-You should back up this information in a secure place.
-******************************************************
-
-Please fund the Lightning Wallet Address above with Bitcoin and wait for 6 confirmation before running 'make deploy'
-
-How many Cores would you like to connect to? (max 4) 2
-Would you like to specify any Core IPs manually? No
-
-You have chosen to connect to 2 Core(s).
-You will now need to fund you wallet with a minimum amount of BTC to cover costs of the initial channel creation and future Core submissions.
-
-? How many Satoshi to commit to each channel/Core? (min 120000) 500000
-? 500000 per channel will require 1000000 Satoshi total funding. Is this OK? (Y/n) y
-
-**************************************************************************************************************
-Please send 1000000 Satoshi (0.01 BTC) to your wallet with address tb1qglvlrlg0velrserjuuy7s4uhrsrhuzwgl8hvgm
-**************************************************************************************************************
-This initialization process will now wait until your Lightning node is fully synced and your wallet is funded with at least 1000000 Satoshi.
-*****************************************
-Your lightning node is fully synced.
-*****************************************
-2020-01-18T04:32:59.361Z> Awaiting funds for wallet... wallet has a current balance of 0
-
-Peer connection established with 03460d821ca4e9a59c8fc9665315ea98ea1960d86ad58e0ca18484dec776f2141c@3.17.78.45:9735
-Peer connection established with 03eef6610d26489b897d81eb142f28ad5cd48a6b3e5c4e42a697cd00d5eb059313@3.135.54.225:9735
-
-Channel created with 03460d821ca4e9a59c8fc9665315ea98ea1960d86ad58e0ca18484dec776f2141c@3.17.78.45:9735
-Channel created with 03eef6610d26489b897d81eb142f28ad5cd48a6b3e5c4e42a697cd00d5eb059313@3.135.54.225:9735
-
-*********************************************************************************
-Chainpoint Node and supporting Lighning node have been successfully initialized.
-*********************************************************************************
-
-$ make deploy
-```
-
-### Chainpoint Clients
-You can download chainpoint-client-js or the Chainpoint CLI to submit hashes to Client Nodes.
-
-To get started with the Chainpoint-Client, follow the guide and sample code at the [Chainpoint-Client-JS](https://github.com/chainpoint/chainpoint-client-js#tldr) repo.
-
-For the CLI, download a release from Github:
-
-```bash
-$ curl -L https://github.com/chainpoint/chainpoint-cli/releases/download/v2.0.0/chainpoint-cli-linux -o chp
-
-$ chmod +x chp
-
-$ ./chp --node-uri http://3.136.178.15 submit ffff27222fe366d0b8988b7312c6ba60ee422418d92b62cdcb71fe2991ee7391
-5c768d70-3bee-11ea-b567-010dabc510b6 | ffff27222fe366d0b8988b7312c6ba60ee422418d92b62cdcb71fe2991ee7391 | submitted
-```
-
-
-## Versions
-
-For the legacy Chainpoint V3 Network using the Tierion Network Token and Chainpoint-Services, please see the [TNT-Legacy repositories](https://github.com/tnt-legacy). 
-The current version of the Chainpoint Network using Lightning and Chainpoint-Core is V4. 
-Stable releases will be tagged in all relevant repos listed under the [Components](#components) section of this Readme. 
-Additionally, the `master` branch for each of these repositories is considered to be generally stable. 
-
-
-## Important Links
-
-- [Chainpoint Website](https://chainpoint.org/)
-- [Tierion Blog](https://medium.com/tierion)
-- [Tierion Discord](https://tnt.tl/tnt_discord)
+# Important Links
+- [Chainpoint Website](https://chainpoint.org)
 - [Chainpoint JSON Proof Schema](https://chainpoint.org/contexts/chainpoint-v4.jsonld)
 - [Lightning Infrastructure Repository](https://github.com/Tierion/boltbox)
+
