@@ -36,7 +36,7 @@ A Command Line Interface (CLI) for creating and verifying Chainpoint proofs.
 # Nodes
 ## [chainpoint-node](http://github.com/chainpoint/chainpoint-node)
 
-Nodes receive hashes from Clients, aggregate hashes in a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree), and periodically send a merkle root to one or more Cores. Each Node is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd_. Nodes use Lighting to pay Cores an Anchor Fee for submitting a merkle root. 
+Nodes receive hashes from Clients, aggregate hashes in a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree), and periodically send a merkle root to one or more Cores. Each Node is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd_). Nodes use Lighting to pay Cores an Anchor Fee for submitting a merkle root. 
 
 
 # Core
