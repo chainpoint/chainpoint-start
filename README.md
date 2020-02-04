@@ -5,7 +5,7 @@ This repo provides an overview of Chainpoint and links to additional resources.
 
 [Chainpoint](https://github.com/chainpoint) is a protocol for anchoring data to Bitcoin to generate a timestamp proof. 
 
-The Chainpoint Network is a globally distributed network of nodes. Clients submit hashes to Nodes, which are aggregated into a [Merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of this tree is published in a Bitcoin transaction. The final Chainpoint Proof contains a set of operations that cryptographically link data to the Bitcoin blockchain.
+The Chainpoint Network is a globally distributed network of nodes. Clients submit hashes to Nodes, which aggregate hashes into a [Merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of this tree is published in a Bitcoin transaction. The final Chainpoint Proof contains a set of operations that cryptographically link data to the Bitcoin blockchain.
 
 ## Chainpoint Network
 ![Draft Chainpoint Architecture Diagram](https://github.com/chainpoint/chainpoint-start/blob/master/imgs/Chainpoint-Network-Overview-Diagram.png)
@@ -42,7 +42,7 @@ Nodes receive hashes from Clients, aggregate hashes in a [merkle tree](https://e
 # Core
 ## [chainpoint-core](http://github.com/chainpoint/chainpoint-core)
 
-Each Core is a member of a distributed network that uses [Tendermint](https://github.com/tendermint/tendermint) to reach consensus. Cores aggregate hashes received from Nodes, maintain the Chainpoint Calendar, and periodically anchor data to the Bitcoin blockchain. Each Core is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd). Cores receive Anchor Fee payments from Nodes via Lightning. The default Anchor Fee is 2 sats. Core Operators can set their Anchor Fee to adapt to changing market conditions.
+Each Core is a member of a distributed network that uses [Tendermint](https://github.com/tendermint/tendermint) to reach consensus. Cores aggregate hashes received from Nodes, maintain the Chainpoint Calendar, and periodically anchor data to the Bitcoin blockchain. Each Core is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd). Cores receive Anchor Fee payments from Nodes via Lightning. The default Anchor Fee is 2 satoshis. Core Operators can set their Anchor Fee to adapt to changing market conditions.
 
 To join the network, Cores must open Lightning channels with 2/3rds of the existing Cores. Each channel must have a minimum capacity of 1,000,000 satoshis. This provides a measure of Sybil resistance and helps ensure Cores have the liquidity to receive Lightning payments from Nodes. As more Cores join the network, each Core anchors less frequently. This reduces the burden of paying Bitcoin transaction fees.
 
@@ -66,6 +66,7 @@ The components of the Chainpoint Network and their dependencies are below.
 |&nbsp; &nbsp; | -- [chainpoint-proof-json-schema](https://github.com/chainpoint/chainpoint-proof-json-schema)  
 
 [Chainpoint CLI](https://github.com/chainpoint/chainpoint-cli)  
+| -- [bitcoin-header-node](https://github.com/chainpoint/bitcoin-header-node)  
 | -- [chainpoint-client-js](https://github.com/chainpoint/chainpoint-client-js)  
 |&nbsp; &nbsp; | -- [chainpoint-parse](https://github.com/chainpoint/chainpoint-parse)  
 |&nbsp; &nbsp; |&nbsp; &nbsp; | -- [chainpoint-binary](https://github.com/chainpoint/chainpoint-binary)  
