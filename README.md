@@ -8,7 +8,7 @@ This repo provides an overview of Chainpoint and links to additional resources.
 The Chainpoint Network is a globally distributed network of nodes. Clients submit hashes to Nodes, which are aggregated into a [Merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of this tree is published in a Bitcoin transaction. The final Chainpoint Proof contains a set of operations that cryptographically link data to the Bitcoin blockchain.
 
 ## Chainpoint Network
-![Draft Chainpoint Architecture Diagram](https://paper-attachments.dropbox.com/s_883E156766A879673911BFDD878E29AA5A98EB3FDCF0A3A1EF22315E9B0438F5_1579736021684_Zeus+Architeture+Draft+v2.png)
+![Draft Chainpoint Architecture Diagram](https://github.com/chainpoint/chainpoint-start/blob/master/imgs/Chainpoint-Network-Overview-Diagram.png)
 
 
 The Chainpoint Network is composed of a hierarchy of aggregators that coordinate to create Chainpoint Proofs. Here’s an overview of the process:
