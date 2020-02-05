@@ -42,7 +42,7 @@ Gateways receive hashes from Clients, aggregate hashes in a [merkle tree](https:
 # Core
 ## [chainpoint-core](http://github.com/chainpoint/chainpoint-core)
 
-Each Core is a member of a distributed network that uses [Tendermint](https://github.com/tendermint/tendermint) to reach consensus. Cores aggregate hashes received from Gateways, maintain the Chainpoint Calendar, and periodically anchor data to the Bitcoin blockchain. Each Core is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd). Cores receive Anchor Fee payments from Gateways via Lightning. The default Anchor Fee is 2 sats. Core Operators can set their Anchor Fee to adapt to changing market conditions.
+Each Core is a member of a distributed network that uses [Tendermint](https://github.com/tendermint/tendermint) to reach consensus. Cores aggregate hashes received from Gateways, maintain the Chainpoint Calendar, and periodically anchor data to the Bitcoin blockchain. Each Core is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd). Cores receive Anchor Fee payments from Gateways via Lightning. The default Anchor Fee is 2 [satoshis](https://en.bitcoin.it/wiki/Satoshi_(unit)). Core Operators can set their Anchor Fee to adapt to changing market conditions.
 
 To join the network, Cores must open Lightning channels with 2/3rds of the existing Cores. Each channel must have a minimum capacity of 1,000,000 satoshis. This provides a measure of Sybil resistance and helps ensure Cores have the liquidity to receive Lightning payments from Gateways. As more Cores join the network, each Core anchors less frequently. This reduces the burden of paying Bitcoin transaction fees.
 
@@ -73,15 +73,15 @@ The components of the Chainpoint Network and their dependencies are below.
 
 # Versions
 
-Stable releases will be tagged in all relevant repos listed in the Components section of this Readme. The `master` branch for each of these repositories is considered to be stable. 
+Stable releases will be tagged in all relevant repos listed in the Components section of this Readme. The `master` branch for these repositories is considered stable. 
 
 # Legacy Software
 
-For the legacy network using the Tierion Network Token and Chainpoint-Services, please see the [TNT-Legacy repositories](https://github.com/tnt-legacy). 
+For the legacy network using the Tierion Network Token, please see the [TNT-Legacy repositories](https://github.com/tnt-legacy). 
 
 # Important Links
 - [Chainpoint Website](https://chainpoint.org)
 - [Chainpoint JSON Proof Schema](https://chainpoint.org/contexts/chainpoint-v4.jsonld)
 - [Boltbox - Lightning Infrastructure](https://github.com/Tierion/boltbox)
 
- ©2020 Tierion
+ © Tierion.
