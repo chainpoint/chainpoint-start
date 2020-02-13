@@ -1,3 +1,5 @@
+# Important: This version of the Chainpoint Network is currently operating in a private testnet. 
+Please [submit an application](https://forms.gle/YNVM8FZXe5dWdEuf7) if you'd like to participate and provide feedback. The information below is subject to change prior to mainnet launch.
 
 This repo provides an overview of Chainpoint and links to additional resources.
 
@@ -84,4 +86,4 @@ For the legacy network using the Tierion Network Token, please see the [TNT-Lega
 - [Chainpoint JSON Proof Schema](https://chainpoint.org/contexts/chainpoint-v4.jsonld)
 - [Boltbox - Lightning Infrastructure](https://github.com/Tierion/boltbox)
 
- © Tierion.
+ © 2020 Tierion. All Rights Reserved.
