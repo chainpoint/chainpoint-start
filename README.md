@@ -68,7 +68,7 @@ The components of the Chainpoint Network and their dependencies are below.
 |&nbsp; &nbsp; | -- [chainpoint-proof-json-schema](https://github.com/chainpoint/chainpoint-proof-json-schema)  
 
 [Chainpoint CLI](https://github.com/chainpoint/chainpoint-cli)  
-| -- [chainpoint-client-js](https://github.com/chainpoint/chainpoint-client-js)  
+| -- [chainpoint-js](https://github.com/chainpoint/chainpoint-js)  
 |&nbsp; &nbsp; | -- [chainpoint-parse](https://github.com/chainpoint/chainpoint-parse)  
 |&nbsp; &nbsp; |&nbsp; &nbsp; | -- [chainpoint-binary](https://github.com/chainpoint/chainpoint-binary)  
 |&nbsp; &nbsp; |&nbsp; &nbsp; | -- [chainpoint-proof-json-schema](https://github.com/chainpoint/chainpoint-proof-json-schema) 
