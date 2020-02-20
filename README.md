@@ -38,13 +38,13 @@ A Command Line Interface (CLI) for creating and verifying Chainpoint proofs.
 # Gateways
 ## [chainpoint-gateway](http://github.com/chainpoint/chainpoint-Gateway)
 
-Gateways receive hashes from Clients, aggregate hashes in a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree), and periodically send a merkle root to one or more Cores. Each Gateway is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd_). Gateways use Lighting to pay Cores an Anchor Fee for submitting a merkle root. 
+Gateways receive hashes from Clients, aggregate hashes in a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree), and periodically send a merkle root to one or more Cores. Each Gateway has an integrated Lightning Node running [LND](https://github.com/lightningnetwork/lnd_). Gateways use Lighting to pay Cores an Anchor Fee for submitting a merkle root. 
 
 
 # Core
 ## [chainpoint-core](http://github.com/chainpoint/chainpoint-core)
 
-Each Core is a member of a distributed network that uses [Tendermint](https://github.com/tendermint/tendermint) to reach consensus. Cores aggregate hashes received from Gateways, maintain the Chainpoint Calendar, and periodically anchor data to the Bitcoin blockchain. Each Core is a Lightning Node running [LND](https://github.com/lightningnetwork/lnd). Cores receive Anchor Fee payments from Gateways via Lightning. The default Anchor Fee is 2 [satoshis](https://en.bitcoin.it/wiki/Satoshi_(unit)). Core Operators can set their Anchor Fee to adapt to changing market conditions.
+Each Core is a member of a distributed network that uses [Tendermint](https://github.com/tendermint/tendermint) to reach consensus. Cores aggregate hashes received from Gateways, maintain the Chainpoint Calendar, and periodically anchor data to the Bitcoin blockchain. Each Core has an integrated Lightning Node running [LND](https://github.com/lightningnetwork/lnd). Cores receive Anchor Fee payments from Gateways via Lightning. The default Anchor Fee is 2 [satoshis](https://en.bitcoin.it/wiki/Satoshi_(unit)). Core Operators can set their Anchor Fee to adapt to changing market conditions.
 
 To join the network, Cores must open Lightning channels with 2/3rds of the existing Cores. Each channel must have a minimum capacity of 1,000,000 satoshis. This provides a measure of Sybil resistance and helps ensure Cores have the liquidity to receive Lightning payments from Gateways. As more Cores join the network, each Core anchors less frequently. This reduces the burden of paying Bitcoin transaction fees.
 
