@@ -1,4 +1,4 @@
-# Important: This version of the Chainpoint Network is currently operating in a private testnet.
+# Important: This version of the Chainpoint Network is currently operating in a testnet.
 Please [submit an application](https://forms.gle/YNVM8FZXe5dWdEuf7) if you'd like to participate and provide feedback. The information below is subject to change prior to mainnet launch.
 
 This repo provides an overview of Chainpoint and links to additional resources.
