@@ -1,5 +1,3 @@
-# Important: This version of the Chainpoint Network is currently operating in a testnet.
-
 This repo provides an overview of Chainpoint and links to additional resources.
 
 ## Chainpoint Overview
