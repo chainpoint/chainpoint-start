@@ -23,7 +23,7 @@ Due to the characteristics of Bitcoin, this asynchronous process takes approxima
 
 
 # Clients
-## [chainpoint-js](https://github.com/chainpoint/chainpoint-client-js)
+## [chainpoint-js](https://github.com/chainpoint/chainpoint-js)
 
 A javascript client to submit hashes to Gateways, retrieve final Chainpoint Proofs, and verify proofs.
 
