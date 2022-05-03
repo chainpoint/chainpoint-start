@@ -53,8 +53,9 @@ The components of the Chainpoint Network and their dependencies are below.
 [Chainpoint Core](https://github.com/chainpoint/chainpoint-core/blob/master/README.md)  
 | -- [Tendermint Core](https://github.com/chainpoint/tendermint)  
 | -- [Lightning Network Daemon](https://github.com/Tierion/lnd)  
-| -- [btc-bridge](https://github.com/Tierion/btc-bridge)  
-|&nbsp; &nbsp; | -- [lnrpc-node-client](https://github.com/Tierion/lnrpc-node-client)  
+| -- [lightning-go](https://github.com/chainpoint/lightning-go)  
+| -- [merkletools-go](https://github.com/chainpoint/merkletools-go)  
+| -- [leader-election](https://github.com/chainpoint/leader-election)  
 
 [Chainpoint Gateway](https://github.com/chainpoint/chainpoint-gateway)  
 | -- [Lightning Network Daemon](https://github.com/Tierion/lnd)  
