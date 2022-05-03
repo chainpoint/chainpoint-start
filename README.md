@@ -15,7 +15,7 @@ The Chainpoint Network is composed of a hierarchy of aggregators that coordinate
 
 1. Clients submit hashes to Gateways. 
 2. Gateways aggregate hashes in a Merkle tree, and send a Merkle root to one or more Cores. 
-3. Cores perform an additional round of aggregation, and write Merkle roots in transactions on a [Tendermint](https://github.com/tendermint/tendermint)-based blockchain called the Calendar. 
+3. Cores perform an additional round of aggregation, then write Merkle roots in transactions on a [Tendermint](https://github.com/tendermint/tendermint)-based blockchain called the Calendar. 
 4. Every hour, a single Core is elected to anchor the state of the Calendar to Bitcoin, monitor the blockchain for [six confirmations](https://en.bitcoin.it/wiki/Confirmation), and write the results back to the Calendar. 
 5. Gateways and Clients use the new data from the Calendar to construct final Chainpoint Proofs. 
 
